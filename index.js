@@ -84,10 +84,15 @@ const library = {
   listAvailableBooks() {
     return this.books.filter((book) => book.isAvailable);
   },
-  borrowBook(title) {},
+  borrowBook(title) {
+    const book = this.books.find((book) => book.title === title);
+    book.isAvailable = false;
+    return book;
+  },
   returnBook(title) {},
 };
 
 const availableBooks = library.listAvailableBooks.bind(library);
 
-console.log(availableBooks());
+// console.log(availableBooks());
+console.log(library.borrowBook("Anna Karenina"));
